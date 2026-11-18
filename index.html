@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sing It Straight: practise singing with exact feedback</title>
+    <meta name="description" content="A model writes a tiny tune, you sing it, and code measures every note you hit in cents. A coach model explains the numbers and reads the advice aloud, all paid with your own Pollen.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="top">
+        <a class="brand" href="./">Sing It Straight</a>
+        <div class="session">
+            <span id="whoami" hidden>Signed in with your Pollen</span>
+            <button id="sign-in" class="button primary" type="button">Sign in with Pollen</button>
+            <button id="sign-out" class="button" type="button" hidden>Sign out</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Sing a tiny tune. See how far off every note was.</h1>
+            <p>
+                A model writes a five to eight note tune about anything you like. You hear it, then sing it into your microphone.
+                The pitch of your voice is measured in your browser, so each note is scored in cents (100 cents is a semitone) and is not a model's opinion.
+                A coach model then explains those numbers, a speech model reads the advice aloud, and a transcriber checks you sang the words.
+            </p>
+        </section>
+
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+        <section class="card">
+            <h2>1. Get a tune</h2>
+            <div class="row">
+                <label class="field">About
+                    <input id="theme" type="text" value="a lighthouse at dawn" maxlength="60">
+                </label>
+                <label class="field">Your voice
+                    <select id="range"></select>
+                </label>
+                <button id="write" class="button primary" type="button">Write me a tune</button>
+            </div>
+        </section>
+
+        <section id="stage" class="card" hidden>
+            <h2 id="title">2. Hear it, then sing it</h2>
+            <canvas id="roll" width="720" height="240" role="img" aria-label="The notes to sing, and the pitch you sang"></canvas>
+            <div class="row">
+                <button id="hear" class="button" type="button">Hear the tune</button>
+                <button id="sing" class="button primary" type="button">Sing it</button>
+                <span id="state" class="fine"></span>
+            </div>
+            <p class="fine">Use headphones if you can, so the tune is not picked up by the microphone. Three clicks count you in, then the notes begin: one every 0.8 seconds.</p>
+        </section>
+
+        <section id="result" class="card" hidden>
+            <h2>3. How it went</h2>
+            <p id="verdict" class="verdict"></p>
+            <div class="scroll"><table id="notes"></table></div>
+            <p id="heard" class="fine"></p>
+            <h3>Coach</h3>
+            <p id="coach"></p>
+            <button id="say" class="button" type="button" hidden>Hear the coach</button>
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p>
+            Every model call runs on <a href="https://pollinations.ai/?ref=badge">Pollinations</a>. This page has no server and keeps no key: you sign in with
+            <a href="https://github.com/pollinations/pollinations/blob/main/BRING_YOUR_OWN_POLLEN.md">your own Pollen</a> and a session costs a few thousandths of a Pollen.
+            Your recording is sent to the transcriber and nowhere else. Made with pollinations.ai.
+        </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

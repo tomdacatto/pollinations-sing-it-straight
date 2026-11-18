@@ -1,0 +1,8 @@
+{
+    "name": "pollinations-sing-it-straight",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "test": "node --test"
+    }
+}
